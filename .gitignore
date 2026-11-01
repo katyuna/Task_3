@@ -1,0 +1,32 @@
+# Claude
+CLAUDE.md
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Виртуальное окружение
+venv/
+.venv/
+env/
+.env
+
+# Pytest
+.pytest_cache/
+
+# Allure: сгенерированный HTML-отчёт (папка allure_results остаётся в репозитории для PR)
+allure-report/
+
+# Логи драйверов
+geckodriver.log
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# ОС
+.DS_Store
+Thumbs.db
