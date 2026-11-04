@@ -6,8 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from data import WAIT_TIMEOUT
 from locators.base_page_locators import BasePageLocators
 
-# HTML5 drag-and-drop через события браузера. ActionChains.drag_and_drop работает в Chrome,
-# но не в Firefox (каунтер остаётся 0), поэтому для обоих браузеров используется этот скрипт.
+# drag-and-drop скрипт
 DRAG_AND_DROP_SCRIPT = """
 const source = arguments[0];
 const target = arguments[1];
@@ -34,8 +33,6 @@ class BasePage:
     def wait_for_visible(self, locator):
         return WebDriverWait(self.driver, WAIT_TIMEOUT).until(EC.visibility_of_element_located(locator))
 
-    # element_to_be_clickable не учитывает, что элемент перекрыт загрузчиком,
-    # поэтому сначала ждём, пока загрузчик исчезнет (иначе Firefox кликает в затемнение)
     def click(self, locator):
         wait = WebDriverWait(self.driver, WAIT_TIMEOUT)
         wait.until(EC.invisibility_of_element_located(BasePageLocators.LOADING_OVERLAY))
@@ -52,12 +49,10 @@ class BasePage:
         target = self.wait_for_visible(target_locator)
         self.driver.execute_script(DRAG_AND_DROP_SCRIPT, source, target)
 
-    # Для шагов-предусловий: если перехода не было, тест падает сразу по таймауту
     @allure.step("Дождаться перехода на {url}")
     def wait_for_url(self, url):
         WebDriverWait(self.driver, WAIT_TIMEOUT).until(EC.url_to_be(url))
 
-    # Для проверок в тестах: возвращает True/False, чтобы результат решал assert
     @allure.step("Проверить, что открыта страница {url}")
     def is_url_opened(self, url):
         try:

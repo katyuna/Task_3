@@ -7,7 +7,6 @@ class MainPageLocators:
     BURGER_CONSTRUCTOR = (By.XPATH, "//section[contains(@class, 'BurgerConstructor_basket')]")
     ORDER_BUTTON = (By.XPATH, "//button[text()='Оформить заказ']")
 
-    # Открытое всплывающее окно (у закрытого нет класса Modal_modal_opened)
     OPENED_MODAL = (By.XPATH, "//section[contains(@class, 'Modal_modal_opened')]")
     INGREDIENT_DETAILS_TITLE = (By.XPATH, "//section[contains(@class, 'Modal_modal_opened')]//h2[text()='Детали ингредиента']")
     MODAL_CLOSE_BUTTON = (By.XPATH, "//section[contains(@class, 'Modal_modal_opened')]//button[contains(@class, 'Modal_modal__close')]")

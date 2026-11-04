@@ -40,8 +40,6 @@ class MainPage(BasePage):
     def click_order_button(self):
         self.click(MainPageLocators.ORDER_BUTTON)
 
-    # Сначала окно показывает заглушку 9999, настоящий номер приходит с сервера чуть позже.
-    # Если номер так и не пришёл, возвращается заглушка — это проверит assert в тесте.
     @allure.step("Получить номер оформленного заказа")
     def get_order_number(self):
         try:
