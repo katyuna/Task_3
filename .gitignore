@@ -1,6 +1,7 @@
 # Claude
 CLAUDE.md
 .claude/
+debug-log.md
 
 # Python
 __pycache__/
@@ -20,7 +21,6 @@ env/
 allure-report/
 
 # Логи драйверов
-geckodriver.log
 *.log
 
 # IDE
